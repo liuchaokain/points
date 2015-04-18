@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h2 align="center">查询结果页面</h2>
+    <table border="1px" align="center" cellpadding="0" cellspacing="0" width="500">
+        <tr align="center">
+            <td>用户id</td>
+            <td>用户名</td>
+            <td>用户密码</td>
+            <td>性别</td>
+            <td>编辑</td>
+        </tr>
+        <volist name="info" id="data">
+            <tr align="center">
+                <td>{$data.id}</td>
+                <td>{$data.username}</td>
+                <td>{$data.password}</td>
+                <td><if condition="$data.sex == 0">男<else/>女</if></td>
+                <td><a href="__ROOT__/User/edit/id/{$data.id}">修改</a> | <a href="__ROOT__/User/del/id/{$data.id}">删除</a></td>
+            </tr>
+        </volist>
+    </table>
+</body>
+</html>

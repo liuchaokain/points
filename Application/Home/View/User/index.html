@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script>
+    function jump(){
+        window.location.href="add";
+    }
+</script>
+<body>
+    <form action="__ROOT__/User/search" method="POST">
+        <div align="center">
+            姓名:<input type="text" name="username"/><br/>
+            性别:<input type="radio" name="sex" value="0"/>男<input type="radio" name="sex" value="1"/>女<br/>
+            <input type="submit" value="查询">
+        </div>
+    </form>
+    <table border="1px" width="600" align="center" cellspacing="0" cellpadding="0">
+            <tr align="center">
+                <td>ID</td>
+                <td>姓名</td>
+                <td>密码</td>
+                <td>性别</td>
+                <td>编辑</td>
+            </tr>
+        <volist name="arr" id="data">
+            <tr align="center">
+                <td>{$data.id}</td>
+                <td>{$data.username}</td>
+                <td>{$data.password}</td>
+                <td><if condition="$data.sex eq 0">男<else/>女</if></td>
+                <td><a href="__ROOT__/User/edit/id/{$data.id}">修改</a> | <a href="__ROOT_/User/del/id/{$data.id}">删除</a></td>
+            </tr>
+        </volist>
+            <tr align="center"><td colspan="5"><input type="button" value="添加用户" onclick="jump()"/></td></tr>
+    </table>
+</body>
+</html>

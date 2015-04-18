@@ -1,0 +1,11 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h2>这是主页面</h2>
+    <h3>欢迎您</volist></h3>
+</body>
+</html>
