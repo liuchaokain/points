@@ -1,0 +1,15 @@
+[ 2015-04-18T16:44:20+08:00 ] 127.0.0.1 /points/User/search
+ERR: 非法操作:User
+
+[ 2015-04-18T16:44:34+08:00 ] 127.0.0.1 /points/User/search
+ERR: 非法操作:User
+
+[ 2015-04-18T16:59:34+08:00 ] 127.0.0.1 /points/create
+ERR: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'card_face_name' cannot be null
+
+[ 2015-04-18T17:01:28+08:00 ] 127.0.0.1 /points/create
+ERR: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'card_face_name' cannot be null
+
+[ 2015-04-18T17:10:24+08:00 ] 127.0.0.1 /points/create
+ERR: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'card_face_name' cannot be null
+

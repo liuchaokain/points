@@ -10,13 +10,14 @@
     }
 </script>
 <body>
-    <form action="__ROOT__/User/search" method="POST">
+    <form action="__ROOT__/search" method="POST" >
         <div align="center">
             姓名:<input type="text" name="username"/><br/>
             性别:<input type="radio" name="sex" value="0"/>男<input type="radio" name="sex" value="1"/>女<br/>
             <input type="submit" value="查询">
         </div>
     </form>
+
     <table border="1px" width="600" align="center" cellspacing="0" cellpadding="0">
             <tr align="center">
                 <td>ID</td>
@@ -28,10 +29,10 @@
         <volist name="arr" id="data">
             <tr align="center">
                 <td>{$data.id}</td>
-                <td>{$data.username}</td>
+                <td><a href="__ROOT__/user_info/id/{$data.id}">{$data.username}</a></td>
                 <td>{$data.password}</td>
                 <td><if condition="$data.sex eq 0">男<else/>女</if></td>
-                <td><a href="__ROOT__/User/edit/id/{$data.id}">修改</a> | <a href="__ROOT_/User/del/id/{$data.id}">删除</a></td>
+                <td><a href="__ROOT__/edit/id/{$data.id}">修改</a> | <a href="__ROOT_/del/id/{$data.id}">删除</a></td>
             </tr>
         </volist>
             <tr align="center"><td colspan="5"><input type="button" value="添加用户" onclick="jump()"/></td></tr>

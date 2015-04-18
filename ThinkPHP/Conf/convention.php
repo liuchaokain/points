@@ -29,6 +29,8 @@ return  array(
     'APP_AUTOLOAD_LAYER'    =>  'Controller,Model', // 自动加载的应用类库层 关闭APP_USE_NAMESPACE后有效
     'APP_AUTOLOAD_PATH'     =>  '', // 自动加载的路径 关闭APP_USE_NAMESPACE后有效
 
+    'rootPath'   =>    './',
+    'savePath'   =>    "../Application/Home/Uploads",
     /* Cookie设置 */
     'COOKIE_EXPIRE'         =>  0,       // Cookie有效期
     'COOKIE_DOMAIN'         =>  '',      // Cookie有效域名
@@ -124,6 +126,8 @@ return  array(
     'TMPL_LAYOUT_ITEM'      =>  '{__CONTENT__}', // 布局模板的内容替换标识
     'LAYOUT_ON'             =>  false, // 是否启用布局
     'LAYOUT_NAME'           =>  'layout', // 当前布局名称 默认为layout
+
+
 
     // Think模板引擎标签库相关设定
     'TAGLIB_BEGIN'          =>  '<',  // 标签库标签开始标记

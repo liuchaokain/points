@@ -23,7 +23,8 @@ define('APP_PATH','./Application/');
 define('BUILD_DIR_SECURE', false);
 // 默认绑定Home模块--注意这里
 define('BIND_MODULE', 'Home');
-
+//默认绑定User控制器
+define('BIND_CONTROLLER','User');
 //默认公共模块路径
 define('COMMON_PATH','./Common/');
 // 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false

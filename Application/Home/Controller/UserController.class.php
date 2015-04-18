@@ -3,7 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 class UserController extends Controller{
     public function Index(){
-        print_r(CONTROLLER_PATH);
+
         $m = M('user');
         $arr = $m->select();
         //var_dump($arr);
@@ -42,14 +42,45 @@ class UserController extends Controller{
     public function add(){
         $this->display();
     }
+    //添加用户
     public function create(){
         $m = M('user');
         $data['username'] = addslashes($_POST['username']);
         $data['password'] = md5($_POST['password']);
         $data['sex']      = $_POST['sex'];
+        $config = array(
+            'maxSize'    =>    3145728,
+            'savePath'   =>    './',
+            'saveName'   =>    array('uniqid',''),
+            'exts'       =>    array('jpg', 'gif', 'png', 'jpeg'),
+            'autoSub'    =>    true,
+            'subName'    =>    array('date','Ymd'),
+        );
+        //print_r($_FILES);die;
+        //实例化upload
+        $upload = new \Think\Upload($config);
+        $face = $upload->uploadOne($_FILES['card_face']);
+        //print_r($face);die;
+        $back = $upload->uploadOne($_FILES['card_back']);
+        if($face){
+            $card_data['card_face_name'] = $face['savename'];
+            $card_data['card_face_url'] = __ROOT__.'/Public/Uploads/'.$face['savepath'].$face['savename'];
+        }else{
+            $this->error($upload->getError());
+        }
+        if($back){
+            $card_data['card_back_name'] = $back['savename'];
+            $card_data['card_back_url'] = __ROOT__.'/Public/Uploads/'.$back['savepath'].$face['savename'];
+        }else{
+            $this->error($upload->getError());
+        }
+
         $id = $m->data($data)->add();
         if($id){
             $this->success('用户添加成功','./index');
+            $card_data['user_id'] = $id;
+            $card_mod = M('card');
+            $card_mod->add($card_data);
         }else{
             $this->error('用户添加失败');
         }
@@ -64,6 +95,16 @@ class UserController extends Controller{
         }
         $arr = $m->where($data)->select();
         $this->assign('arr',$arr);
+        $this->display('index');
+    }
+    public function user_info(){
+        $data['id'] = $_GET['id'];
+        $m = M('user');
+        $info = $m->where($data)->find();
+        //$this->assign('info',$info);
+        $this->display();
+    }
+    public function file(){
         $this->display('index');
     }
 }
